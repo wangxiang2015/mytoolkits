@@ -35,15 +35,17 @@ def main():
     cmd = get_processes_on_gpu_cmd
     out_info = subprocess.getoutput(cmd)
 
-    res = ''
+    pid = ''
     for line in out_info.split('\n'):
         if f'/dev/nvidia{gpu_id}' in line:
-            res = re.split(r'\s+', line)[2]
-    print(f"killing PID: {res}")
-
-    out_info = subprocess.run(f'kill -9 {res}', shell=True)
-
-    print(f"--- Done! ---")
+            pid = re.split(r'\s+', line)[2]
+    
+    if pid!='':
+        print(f"killing PID: {pid} on GPU-{gpu_id} ...")
+        out_info = subprocess.run(f'kill -9 {pid}', shell=True)
+        print(f"--- Done! ---")
+    else:
+        print(f"No process running on GPU-{gpu_id}")
 
 
 if __name__=='__main__':
