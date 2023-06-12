@@ -64,7 +64,6 @@ def get_disk_info():
 
     return res
 
-    
 
 def main():
     print(f"""1. [\033[31mnum_cpu\033[0m]: {get_num_cpu()}\n2. [\033[31mcpu_cores\033[0m]: {get_num_cores_for_each_cpu()}\n3. [\033[31mos_info\033[0m]: {get_os_info()}\n4. [\033[31mlinux_info\033[0m]: {get_linux_info()}\n5. [\033[31mmemory_info\033[0m]: {get_memory_info()}\n6. [\033[31mdisk_info\033[0m]: \n{get_disk_info()}""")
